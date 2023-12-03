@@ -48,7 +48,7 @@ class Day02 extends Day
                     }, []);
 
                 return [
-                    str($line)->before(':')->after('Game ')->value() => $biggestCounts
+                    str($line)->before(':')->after('Game ')->value() => $biggestCounts,
                 ];
             })->reduce(function ($carry, $game, $id) {
                 // only 12 red cubes, 13 green cubes, and 14 blue cubes?
