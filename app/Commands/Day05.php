@@ -93,42 +93,44 @@ class Day05 extends Day
             $data[$currentKey][] = explode(' ', $line);
         }
 
-        $result = INF;
+        $data = array_reverse($data);
 
-        foreach ($seeds as [$seed, $range]) {
-            $seedMax = $seed + $range - 1;
+        $attempt = 0;
+        $answer = null;
 
-            while ($seed <= $seedMax) {
-                $destination = $seed;
+        while (is_null($answer)) {
+            $carry = $attempt;
 
-                foreach ($data as $maps) {
-                    foreach ($maps as $map) {
-                        $destinationMin = $map[0];
-                        [$sourceMin, $sourceMax] = [$map[1], $map[1] + $map[2] - 1];
+            foreach ($data as $maps) {
+                foreach ($maps as $map) {
+                    [$destinationMin, $destinationMax] = [$map[0], $map[0] + $map[2] - 1];
+                    $sourceMin = $map[1];
 
-                        $inRange = $destination >= $sourceMin && $destination <= $sourceMax;
+                    $inRange = $carry >= $destinationMin && $carry <= $destinationMax;
 
-                        if ($inRange) {
-                            $diff = $destination - $sourceMin;
+                    if ($inRange) {
+                        $diff = $carry - $destinationMin;
 
-                            $destination = $destinationMin + $diff;
-//                            dump("$seed -> $destination");
+                        $carry = $sourceMin + $diff;
 
-                            break;
-                        }
+                        break;
                     }
                 }
-
-                if ($result !== min($result, $destination)) {
-                    $this->info("New result found: $result");
-                }
-
-                $result = min($result, $destination);
-
-                $seed++;
             }
+
+            foreach ($seeds as [$seed, $range]) {
+                $seedMax = $seed + $range - 1;
+
+                if ($carry >= $seed && $carry <= $seedMax) {
+                    $answer = $attempt;
+
+                    break;
+                }
+            }
+
+            $attempt++;
         }
 
-        return (int) $result;
+        return $answer;
     }
 }
