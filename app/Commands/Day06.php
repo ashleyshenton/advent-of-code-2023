@@ -53,9 +53,9 @@ class Day06 extends Day
         $lines = array_filter(explode(PHP_EOL, rtrim($this->puzzleInput, PHP_EOL)));
 
         preg_match_all('/\d+/', $lines[0], $matches);
-        $time = intval(array_reduce($matches[0], fn (string $carry, string $item) => $carry . $item, ''));
+        $time = intval(array_reduce($matches[0], fn (string $carry, string $item) => $carry.$item, ''));
         preg_match_all('/\d+/', $lines[1], $matches);
-        $distance = intval(array_reduce($matches[0], fn (string $carry, string $item) => $carry . $item, ''));
+        $distance = intval(array_reduce($matches[0], fn (string $carry, string $item) => $carry.$item, ''));
 
         $countOfPossibleSolutions = 0;
 
