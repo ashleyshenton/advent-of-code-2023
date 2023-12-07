@@ -10,14 +10,6 @@ class Day02 extends Day
 
     protected $description = 'Solutions for Day 2';
 
-    public function handle(): int
-    {
-        $this->info('Solution 1: '.$this->solutionOne());
-        $this->info('Solution 2: '.$this->solutionTwo());
-
-        return parent::SUCCESS;
-    }
-
     public function solutionOne(): int
     {
         return collect(explode(PHP_EOL, rtrim($this->puzzleInput, PHP_EOL)))

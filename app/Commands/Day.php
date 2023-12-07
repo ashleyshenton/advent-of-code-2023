@@ -19,4 +19,16 @@ abstract class Day extends Command
 
         $this->puzzleInput ??= Cache::rememberForever("day:$day", fn () => Http::aocDay($day));
     }
+
+    public function handle(): int
+    {
+        $this->info('Solution 1: '.$this->solutionOne());
+        $this->info('Solution 2: '.$this->solutionTwo());
+
+        return parent::SUCCESS;
+    }
+
+    abstract public function solutionOne(): int;
+
+    abstract public function solutionTwo(): int;
 }
