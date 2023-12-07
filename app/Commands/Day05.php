@@ -8,10 +8,6 @@ use Illuminate\Support\Str;
 
 class Day05 extends Day
 {
-    protected $signature = 'day:5';
-
-    protected $description = 'Solutions for Day 5';
-
     public function solutionOne(): int
     {
         $lines = array_filter(explode(PHP_EOL, rtrim($this->puzzleInput, PHP_EOL)));

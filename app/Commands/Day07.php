@@ -10,10 +10,6 @@ use App\Enums\Day07\PartTwoCard;
 
 class Day07 extends Day
 {
-    protected $signature = 'day:7';
-
-    protected $description = 'Solutions for Day 7';
-
     public function solutionOne(): int
     {
         $lines = array_map(fn (string $line) => explode(' ', $line), explode(PHP_EOL, rtrim($this->puzzleInput, PHP_EOL)));

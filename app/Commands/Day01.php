@@ -6,10 +6,6 @@ namespace App\Commands;
 
 class Day01 extends Day
 {
-    protected $signature = 'day:1';
-
-    protected $description = 'Solutions for Day 1';
-
     public function solutionOne(): int
     {
         $lines = explode(PHP_EOL, rtrim($this->puzzleInput, PHP_EOL));
