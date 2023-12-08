@@ -43,7 +43,7 @@ abstract class Day extends Command
         }
 
         if (! $part || $part === '2') {
-            $this->info('Solution 2: ' . $this->solutionTwo());
+            $this->info('Solution 2: '.$this->solutionTwo());
         }
 
         return parent::SUCCESS;
